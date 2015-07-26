@@ -42,7 +42,7 @@ No one wants this. But it happens all the time.
 
 ## Get to the point already
 
-AcceptsNestedIds defers the saving of ID-based associations to a model's `after_save` callback. In the example above, no User associations would have been created.
+AcceptsNestedIds defers the saving of ID-based associations to a model's `after_save` callback. In the example above, no User associations would have been created when using this gem.
 
 ## Bonus
 
@@ -120,7 +120,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/littleblimp/accepts_nested_ids.
+Bug reports and pull requests are welcome on GitHub at https://github.com/uberllama/accepts_nested_ids.
 
 
 ## License
