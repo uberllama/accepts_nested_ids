@@ -18,11 +18,6 @@ class Project < ActiveRecord::Base
   has_many :users, through: :project_users
   validates :name, presence: true
 end
-
-class User < ActiveRecord::Base
-  has_many :project_users
-  has_many :projects, through: :project_users
-end
 ```
 
 When creating or updating a Project, you can select a list of User IDs from a select list. Great.
