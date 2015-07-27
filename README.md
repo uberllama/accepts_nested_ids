@@ -80,6 +80,8 @@ class Project < ActiveRecord::Base
   has_many :users, through: :project_users
   accepts_nested_ids_for :users
 end
+
+project.user_ids = [...]
 ```
 
 ### When your association has a custom name:
@@ -91,7 +93,11 @@ class Project < ActiveRecord::Base
   has_many :included_users, through: :project_users, source: :user
   accepts_nested_ids_for included_users: "User"
 end
+
+project.included_user_ids = [...]
 ```
+
+When using a custom association name, you must specify the actual class name as a second arg, in this case "User".
 
 ### Mix and match as desired:
 
@@ -103,9 +109,10 @@ class Project < ActiveRecord::Base
   has_many :included_users, through: :project_users, source: :user
   accepts_nested_ids_for :documents, included_users: "User"
 end
-```
 
-You can now comfortably set `document_ids` or `user_ids` on a `Project` without making a mess of things.
+project.document_ids = [...]
+project.included_user_ids = [...]
+```
 
 ## Development
 
