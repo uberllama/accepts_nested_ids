@@ -1,4 +1,5 @@
 require "accepts_nested_ids/version"
+require "accepts_nested_ids/nested_id_association"
 require "active_support/concern"
 require "active_support/core_ext/string/inflections"
 
@@ -33,13 +34,6 @@ module AcceptsNestedIds
     end
 
     module ClassMethods
-
-      # Simple object that contains information about a nested ID association
-      #
-      # @param attr [Symbol]       association attribute (ex: :documents)
-      # @param ids_attr [String]   ids association attribute (ex: 'document_ids')
-      # @param class_name [String] association class name (ex: 'Document')
-      class NestedIdAssociation < Struct.new(:attr, :ids_attr, :class_name); end
 
       # Sets up defered save and dirty tracking for the specified associations
       #
