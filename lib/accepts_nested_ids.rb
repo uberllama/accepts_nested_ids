@@ -45,11 +45,11 @@ module AcceptsNestedIds
       #
       # @example When class_name can be inferred from association name
       #   include AcceptsNestedIds
-      #   accepts_nested_ids_for :documents, :carrier_companies
+      #   accepts_nested_ids_for :documents, :users
       #
       # @example When class_name is different from association name
       #   include AcceptsNestedIds
-      #   accepts_nested_ids_for :documents, included_carrier_companies: "CarrierCompany"
+      #   accepts_nested_ids_for :documents, included_users: "User"
       #
       # @param args [Array]
       def accepts_nested_ids_for(*args)
@@ -97,11 +97,11 @@ module AcceptsNestedIds
       # Map module args into array of NestedIdAssociation objects with supporting properties
       #
       # @example
-      #   accepts_nested_ids_for :documents, included_carrier_companies: "CarrierCompany"
+      #   accepts_nested_ids_for :documents, included_users: "User"
       #   =>
       #   [
       #     { attr: :documents:, ids_attr: "document_ids", class_name: "Document"},
-      #     { attr: :included_carrier_companies, ids_attr: "included_carrier_company_ids", class_name: "CarrierCompany" }
+      #     { attr: :included_users, ids_attr: "included_user_ids", class_name: "User" }
       #   ]
       #
       # @param args [Array]
