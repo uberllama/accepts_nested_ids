@@ -23,6 +23,9 @@ ActiveRecord::Schema.define do
   create_table :users do |t|
   end
 
+  create_table :companies do |t|
+    t.string :type, null: false
+  end
 end
 
 class Project < ActiveRecord::Base
@@ -48,3 +51,11 @@ class User < ActiveRecord::Base
   has_many :project_users
   has_many :projects, through: :project_users
 end
+
+class Company < ActiveRecord::Base
+  include AcceptsNestedIds
+  has_many :documents
+  accepts_nested_ids_for :documents
+end
+
+class Vendor < Company; end
