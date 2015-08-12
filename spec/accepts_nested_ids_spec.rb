@@ -24,4 +24,13 @@ describe AcceptsNestedIds do
     it_behaves_like "a proper gentleman"
   end
 
+  describe 'accepts_nested_ids for STI' do
+    let(:record) { ClientCompany.new }
+    let(:association_attr) { :documents }
+    let(:association_ids_attr) { :document_ids }
+    let(:association_class_name) { "Document" }
+
+    it_behaves_like "a proper gentleman"
+  end
+
 end
