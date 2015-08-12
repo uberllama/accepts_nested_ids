@@ -24,13 +24,17 @@ module AcceptsNestedIds
     #   end
     #
     def save_nested_id_associations
-      self.class.nested_id_associations.each do |nested_id_association|
+      nested_id_associations.each do |nested_id_association|
         if instance_variable_get("@#{nested_id_association.ids_attr}")
           association_class = nested_id_association.class_name.constantize
           ids               = send(nested_id_association.ids_attr)
           send("#{nested_id_association.attr}=", association_class.where(id: ids))
         end
       end
+    end
+
+    def nested_id_associations
+      self.class.nested_id_associations || self.class.superclass.nested_id_associations
     end
 
     module ClassMethods
