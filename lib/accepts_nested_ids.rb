@@ -84,7 +84,7 @@ module AcceptsNestedIds
       end
 
       def nested_id_associations
-        @_nested_id_associations
+        @_nested_id_associations || []
       end
 
       private
