@@ -35,11 +35,13 @@ class Company < ActiveRecord::Base
   include AcceptsNestedIds
   has_many :users
   accepts_nested_ids_for :users
+  attribute :user_ids
 end
 
 class Vendor < Company
   has_many :rental_services
   accepts_nested_ids_for :rental_services
+  attribute :rental_service_ids
 end
 
 class User < ActiveRecord::Base
@@ -53,6 +55,8 @@ class Project < ActiveRecord::Base
   has_many :project_users
   has_many :included_users, through: :project_users, source: :user
   accepts_nested_ids_for :documents, included_users: "User"
+  attribute :document_ids
+  attribute :included_user_ids
 end
 
 class ProjectUser < ActiveRecord::Base

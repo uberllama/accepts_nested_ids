@@ -77,7 +77,7 @@ module AcceptsNestedIds
           define_method("#{nested_id_association.ids_attr}=") do |value|
             return if send(nested_id_association.ids_attr) == value
             attribute_will_change!(nested_id_association.ids_attr)
-            instance_variable_set("@#{nested_id_association.ids_attr}", value)
+            instance_variable_set(:"@#{nested_id_association.ids_attr}", value)
           end
 
         end
