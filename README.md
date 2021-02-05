@@ -17,6 +17,7 @@ class Project < ActiveRecord::Base
   has_many :project_users
   has_many :users, through: :project_users
   validates :name, presence: true
+  attribute :user_ids
 end
 ```
 
@@ -79,6 +80,7 @@ class Project < ActiveRecord::Base
   has_many :project_users
   has_many :users, through: :project_users
   accepts_nested_ids_for :users
+  attribute :user_ids
 end
 
 project.user_ids = [...]
@@ -92,6 +94,7 @@ class Project < ActiveRecord::Base
   has_many :project_users
   has_many :included_users, through: :project_users, source: :user
   accepts_nested_ids_for included_users: "User"
+  attribute :user_ids
 end
 
 project.included_user_ids = [...]
@@ -108,6 +111,7 @@ class Project < ActiveRecord::Base
   has_many :project_users
   has_many :included_users, through: :project_users, source: :user
   accepts_nested_ids_for :documents, included_users: "User"
+  attribute :user_ids
 end
 
 project.document_ids = [...]
