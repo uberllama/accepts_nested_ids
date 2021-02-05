@@ -1,3 +1,15 @@
+## 0.2.2 (2021-02-04)
+
+Ensure this works with Ruby 3.0.0 by adding the #attribute method within any class to extend ActiveRecord in order to create those helper methods.
+Example:
+`class Company < ActiveRecord::Base
+  include AcceptsNestedIds
+  has_many :users
+  accepts_nested_ids_for :users
+  attribute :user_ids
+end`
+
+
 ## 0.2.1 (2016-02-05)
 
 Ensure empty array of nested associations is loaded, to handle situations where a sub class does not define its own associations and the intersection between base and sub class associations was failing.

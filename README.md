@@ -17,6 +17,7 @@ class Project < ActiveRecord::Base
   has_many :project_users
   has_many :users, through: :project_users
   validates :name, presence: true
+  attribute :user_ids
 end
 ```
 
@@ -79,6 +80,7 @@ class Project < ActiveRecord::Base
   has_many :project_users
   has_many :users, through: :project_users
   accepts_nested_ids_for :users
+  attribute :user_ids
 end
 
 project.user_ids = [...]
@@ -92,6 +94,7 @@ class Project < ActiveRecord::Base
   has_many :project_users
   has_many :included_users, through: :project_users, source: :user
   accepts_nested_ids_for included_users: "User"
+  attribute :user_ids
 end
 
 project.included_user_ids = [...]
@@ -108,6 +111,7 @@ class Project < ActiveRecord::Base
   has_many :project_users
   has_many :included_users, through: :project_users, source: :user
   accepts_nested_ids_for :documents, included_users: "User"
+  attribute :user_ids
 end
 
 project.document_ids = [...]
@@ -119,6 +123,9 @@ project.included_user_ids = [...]
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+## Requirements
+Requires Activemodel & Activerecord `6.1.1` or higher
 
 ## Contributing
 
